@@ -1,0 +1,45 @@
+﻿@model BuyEnergyViewModel
+
+
+<div class="container">
+    <div class="row">
+         <form method="post" asp-action="BuyEnergy" asp-controller="Home">
+  <div class="mb-3">
+    <label for="lblTotalEnergyAmount" class="form-label">Sizin ümumi enerji miqdarınız</label>
+    <input readonly asp-for="TotalEnergyAmount" type="number" class="form-control" id="numTotalEnergyAmount">
+  </div>
+  <div class="mb-3">
+    <label for="lblTotalEnergyAmount" class="form-label">Sizin enerji tutumunuz</label>
+    <input readonly asp-for="MaxEnergyAmount" type="number" class="form-control" id="numMaxEnergyAmount">
+  </div>
+   <div class="mb-3">
+    <label for="numStorageTotalAmount" class="form-label">Mərkəzi Elektrik Stansiyasındakı ümumi enerji miqdarı</label>
+    <input readonly asp-for="StorageTotalAmount" type="number" class="form-control" id="numStorageTotalAmount">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Aldığınız enerji miqdarı</label>
+    <input type="number" asp-for="BuyAmount" class="form-control" id="numBuyAmount" onchange="numIncome_onchange()">
+  </div>
+
+  <div class="mb-3">
+    <label for="lblIncome" class="form-label">Xərciniz</label>
+    <input asp-for="Income" readonly type="number" class="form-control" id="numIncome">
+  </div>
+  <button type="submit" class="btn btn-primary">Satın al</button>
+  </form>
+    </div>
+
+</div>
+
+@section Scripts{
+            <script>
+                    function numIncome_onchange(){
+                                var sellAmount = document.getElementById("numBuyAmount").value;
+                            var azn = sellAmount*0.07;
+                                azn=(azn.toFixed(2));
+                                    document.getElementById("numIncome").value=azn;
+                    }
+            </script>
+}
+
+

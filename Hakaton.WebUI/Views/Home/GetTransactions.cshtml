@@ -1,0 +1,55 @@
+﻿@model GetTransactionsViewModel
+
+<div class="container mt-3">
+    <div class="row">
+    <div class="col-lg-6">
+        <table class="table">
+          <thead class="table-light">
+             <th scope="col">#</th>
+             <th scope="col">Satdığınız enerji miqdarı</th>
+             <th scope="col">Gəlir</th>
+             <th scope="col">Satış Tarixi</th>
+          </thead>
+          <tbody>
+                    @for (int i = 0; i < Model.SellTransactions.Count; i++)
+                    {
+                          <tr>
+                          <th scope="row">@(i + 1)</th>
+                              <td>@Model.SellTransactions[i].EnergyAmount</td>
+                              <td>@Model.SellTransactions[i].Income</td>
+                              <td>@Model.SellTransactions[i].SaleDate</td>
+                          </tr>
+                    }
+          </tbody>
+        </table>
+    </div>
+    <div class="col-lg-6">
+         <table class="table">
+          <thead class="table-light">
+             <th scope="col">#</th>
+             <th scope="col">Aldığınız enerji miqdarı</th>
+             <th scope="col">Xərc</th>
+             <th scope="col">Satış Tarixi</th>
+          </thead>
+          <tbody>
+                    @for (int i = 0; i < Model.BuyTransactions.Count; i++)
+                    {
+                              <tr>
+                              <th scope="row">@(i + 1)</th>
+                                      <td>@Model.BuyTransactions[i].EnergyAmount</td>
+                                      <td>@Model.BuyTransactions[i].Income</td>
+                                      <td>@Model.BuyTransactions[i].SaleDate</td>
+                              </tr>
+                    }
+          </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div class="row">
+         <div class="mb-3">
+         <label for="numStorageTotalAmount" class="form-label">Toplam qazancınız (AZN)</label>
+    <input readonly asp-for="TotalIncome" type="text" class="form-control" id="numStorageTotalAmount">
+  </div>
+    </div>
+</div>

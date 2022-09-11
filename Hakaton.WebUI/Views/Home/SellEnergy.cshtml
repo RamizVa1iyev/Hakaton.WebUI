@@ -1,0 +1,36 @@
+﻿@model SellEnergyViewModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+         <form method="post" asp-action="SellEnergy" asp-controller="Home">
+  <div class="mb-3">
+    <label for="lblTotalEnergyAmount" class="form-label">Ümumi enerji miqdarı</label>
+    <input readonly asp-for="TotalEnergyAmount" type="number" class="form-control" id="numTotalEnergyAmount">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Satdığınız enerji miqdarı</label>
+    <input type="number" asp-for="SellAmount" class="form-control" id="numSellAmount" onchange="numIncome_onchange()">
+  </div>
+
+  <div class="mb-3">
+    <label for="lblIncome" class="form-label">Gəliriniz</label>
+    <input asp-for="Income" readonly type="number" class="form-control" id="numIncome">
+  </div>
+  <button type="submit" class="btn btn-primary">Satın</button>
+  </form>
+    </div>
+
+</div>
+
+@section Scripts{
+        <script>
+                function numIncome_onchange(){
+                        var sellAmount = document.getElementById("numSellAmount").value;
+                        var azn = sellAmount*0.07;
+                            azn=azn.toFixed(2)
+                                document.getElementById("numIncome").value=azn;
+                }
+        </script>
+}

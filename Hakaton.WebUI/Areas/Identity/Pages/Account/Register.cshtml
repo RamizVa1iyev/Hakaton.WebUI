@@ -1,0 +1,80 @@
+﻿@page
+@model RegisterModel
+@{
+}
+
+
+<section class="pb-4">
+  <div class="bg-white border rounded-5">
+
+    <section class="p-5 w-100" style="background-color: #eee; border-radius: .5rem .5rem 0 0;">
+      <div class="row">
+        <div class="col-12">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                  <p class="text-center h1 fw-bold mb-5 mt-4">Qeydiyyatdan Keçin</p>
+
+                  <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                      
+                    <div class="mb-4">
+
+                         <div class="d-flex flex-row align-items-center mb-4">
+                      <i style="margin-top:1rem" class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Emailiniz</label>
+                        <input asp-for="Input.Email" type="email" id="form3Example3c" class="form-control" />
+                      </div>
+                    </div>
+                      <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                      <i style="margin-top:1rem" class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Şifrəniz</label>
+                        <input asp-for="Input.Password" type="password" id="form3Example4c" class="form-control" />
+                      </div>
+                    </div>
+                      <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                      <i style="margin-top:1rem" class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">Şifrənizi təkrarlayın</label>
+                        <input asp-for="Input.ConfirmPassword" type="password" id="form3Example4cd" class="form-control" />
+                      </div>
+                    </div>
+                      <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+                    </div>
+<img  />
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="submit" class="btn btn-primary btn-lg" style="background-color:#1D7C9A !important">Qeydiyatdan Keçin</button>
+                    </div>
+                    
+                  </form>
+                  @Html.Raw(@ViewBag.Alert)
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                  <img src="~/images/main1.png"
+                    class="img-fluid" alt="Sample image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
